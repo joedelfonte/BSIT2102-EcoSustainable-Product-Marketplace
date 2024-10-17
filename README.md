@@ -22,15 +22,17 @@ How to handle user data?<br>
 ----Database User parameters----<br>
 
 --User Personal Info<br>
-> *dbid<br>
- id for database
+1. dbid<br>
+> id for database
 
-*userid                             
-//usercontact for platform like UID in some games--<br> 
-public if and only account is user approved and for searching-- note: same role as 
-<br>userdisplayname but unique value<br>
->>*Name (First, Middle I., Last)      //Note- Do not Forget Normalization and apply single value only<br>;
-*Age                                //Restricted to 16 years old and below<br>
+2. userid                             
+> usercontact for platform like UID in some games
+public if and only account is user approved and for searching 
+note: same role as userdisplayname but unique value
+
+3. Name (First, Middle I., Last)
+> Note- Do not Forget Normalization and apply single value only.
+4. Age                                //Restricted to 16 years old and below<br>
 *userdisplayname                    //this is protected and for account display name instead of username and name<br>
 *username                           //this and password is for credentials only == protected <br>
 *password                           //private only and accessible only if have a username--(thinking what to add)<br>
