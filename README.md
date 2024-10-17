@@ -76,4 +76,6 @@ login duration<br>
     3. As Project in PHP what we need to prioritize is how we use our learned <br>especially in the coordination of PHP and database, the use of objects <br>and how we handle data.<br>
     4.  )
 
-Thats all for now!!
+Thats all for now!!<br>
+ohh the test branch if for testing some of my ideas <br>
+Thats all now!<br>
