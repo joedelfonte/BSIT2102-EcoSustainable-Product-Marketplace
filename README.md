@@ -1,4 +1,5 @@
 ﻿# BSIT2102_EcoSustainable_Product_Marketplace
+## title {.tabset .tabset-fade}
 
 BSIT 2102<br>
 
@@ -12,10 +13,9 @@ Members :  Roice Panes, Arron Catapang.<br>
 How to clone and commit change this repository to vscode.<br>
 https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#:~:text=To%20clone%20a%20repository%2C%20run,to%20clone%20to%20your%20machine.
 
-## title {.tabset .tabset-fade}
-content above tabbed region.
 
-### tab Objectives
+
+### Objectives
 
 Objectives--<br>
     (Note: Ask leader for clarifications, this is transparency for better to understand structure of program code, 
