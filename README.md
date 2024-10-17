@@ -17,7 +17,7 @@ https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#:~:text=To%20clone
 Objectives--<br>
     > (Note: Ask leader for clarifications, this is transparency for better to understand structure of program code, 
     <br>it will add later some variable names<br> 
-    - Note: (!!!!) = the human is thingking what to add)<br> 
+    "\t"- Note: (!!!!) = the human is thingking what to add)<br> 
 
 How to handle user data?<br>
 ----Database User parameters----<br>
