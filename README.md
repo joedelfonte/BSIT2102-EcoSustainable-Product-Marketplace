@@ -4,70 +4,71 @@ BSIT 2102<br>
 CS 121 Final Project <br>
 
 **Project Title : Eco and Sustainable Product Marketplace.**<br>
-> Leader : Ralph Joedel Fonte.<br>
-> Members :  Roice Panes, Arron Catapang.<br>
+Leader : Ralph Joedel Fonte.<br>
+Members :  Roice Panes, Arron Catapang.<br>
 
 
 > How to clone and commit change this repository to vscode.<br>
 https://code.visualstudio.com/docs/sourcecontrol/intro-to-git#:~:text=To%20clone%20a%20repository%2C%20run,to%20clone%20to%20your%20machine.
 
-
 # Objectives
 
 > (Note: Ask leader for clarifications, this is transparency for better to understand structure of program code,<br>
 >it will add later some variable names<br> 
->Note: (!!!!) = the human is thingking what to add)<br> 
+>Note: (!!!!) = the human is thinking what to add)<br> 
 
 How to handle user data?<br>
 
 Database User parameters<br>
-
 --User Personal Info--<br>
 
-dbid<br>
+DatabaseId<br>
 > id for database
 
-2. userid                             
+userid                             
 >usercontact for platform like UID in some games
->public if and only account is user approved and for searching 
->note: same role as userdisplayname but unique value
+>public if and only account is user approved and for searching <br>
+>note: same role as userdisplayname but unique value<br>
 
-3. Name (First, Middle I., Last)
->       Note- Do not Forget Normalization and apply single value only.
+Name (First, Middle I., Last)
+>Note- Do not Forget Normalization and apply single value only.<br>
 
-4. Age                                
->       Restricted to 16 years old and below<br>
+Age                                
+>Restricted to 16 years old and below<br>
 
-5. userdisplayname                    
->       this is protected and for account display name instead of username and name
+userdisplayname                    
+>this is protected and for account display name instead of username and name<br>
 
-6. username
->       this and password is for credentials only == protected
+username
+>this and password is for credentials only == protected<br>
 
-7. password 
->       private only and accessible only if have a username--(thinking what to add)
+password 
+>private only and accessible only if have a username--(thinking what to add)<br>
 
-8. email
->       unique but it only access username but not usename<br>
+email
+>unique but it only access username but not usename<br><br>
 
 9. number
->       optional when creating account but need for ordering 
-        i mean same value in order contact number
+>optional when creating account but need for ordering <br>
+>i mean same value in order contact number<br>
 
 10. (!!!!)
 
-Miselanous User Data(this is like cookies but for login verification and some user data for use like, saving user fingerprint--we have 2 choices and will apply both in different security level)<br> 
+---Miselanous User Data---
+>This is like cookies but for login verification and some user data for use,<br>
+>like, saving user fingerprint--we have 2 choices and will apply both in different security level<br> 
 
 *(These 2 has cos and pros so be careful in using)<br> 
 1. Using IP address and cookies 
->       The use is if user login in same browser and no need to log-in again(!!!!)
+>The use is if user login in same browser and no need to log-in again(!!!!)
 
 2. User fingerprint 
->       by getting the user System info like OS version, what os, ram, proccessor, <br> and systemid for user recognition or modifying data (Note: Useful for admministrator log-in)(!!!!)
+> by getting the user System info like OS version, what os, ram, proccessor, <br> and systemid for user recognition or modifying data<br> 
+>(Note: Useful for admministrator log-in)(!!!!)<br>
 
-3. last login<br> 
-4. login duration<br> 
-5. (!!!! thinkinggg)<br> 
+last login/login data<br> 
+login duration<br> 
+(!!!! thinkinggg)<br> 
 
 >(Note to discuss!!<br> 
     1. Our project is marketplace so need to add parameters for product and what product to sell.<br>
