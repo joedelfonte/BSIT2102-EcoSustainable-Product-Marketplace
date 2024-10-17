@@ -23,13 +23,13 @@ How to handle user data?<br>
 Database User parameters<br>
 
 --User Personal Info--<br>
-1. dbid<br>
+dbid<br>
 >       id for database
 
 2. userid                             
 >       usercontact for platform like UID in some games
-        public if and only account is user approved and for searching 
-        note: same role as userdisplayname but unique value
+>       public if and only account is user approved and for searching 
+>        note: same role as userdisplayname but unique value
 
 3. Name (First, Middle I., Last)
 >       Note- Do not Forget Normalization and apply single value only.
