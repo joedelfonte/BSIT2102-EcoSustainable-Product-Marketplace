@@ -22,8 +22,9 @@ How to handle user data?<br>
 ----Database User parameters----<br>
 
 --User Personal Info<br>
->*dbid<br>
+> *dbid<br>
  id for database
+
 *userid                             
 //usercontact for platform like UID in some games--<br> 
 public if and only account is user approved and for searching-- note: same role as 
