@@ -26,7 +26,7 @@ How to handle user data?<br>
 *dbid                               //id for database<br>
 *userid                             //usercontact for platform like UID in some games--<br> 
                                     public if and only account is user approved and for searching-- note: same role as <br>userdisplayname but unique value<br>
-*Name (First, Middle I., Last)      //Note- Do not Forget Normalization and apply single value only<br>
+*Name (First, Middle I., Last)      //Note- Do not Forget Normalization and apply single value only<br>;
 *Age                                //Restricted to 16 years old and below<br>
 *userdisplayname                    //this is protected and for account display name instead of username and name<br>
 *username                           //this and password is for credentials only == protected <br>
@@ -48,8 +48,8 @@ How to handle user data?<br>
 
 (Note to discuss!!<br> 
     1. Our project is marketplace so need to add parameters for product and what product to sell.<br>
-    2. We need to think IF what blueprint we need for marketplace like we have a delivery services or same facebook marketplace that serve as a platform for Farmers/Sellers to Customers.
-    3. As Project in PHP what we need to prioritize is how we use our learned especially in the coordination of PHP and database, the use of objects and how we handle data.
+    2. We need to think IF what blueprint we need for marketplace like we have a<br> delivery services or same facebook marketplace that serve as a platform<br> for Farmers/Sellers to Customers.<br>
+    3. As Project in PHP what we need to prioritize is how we use our learned <br>especially in the coordination of PHP and database, the use of objects <br>and how we handle data.<br>
     4.  
     )
 Thats all for now!!
