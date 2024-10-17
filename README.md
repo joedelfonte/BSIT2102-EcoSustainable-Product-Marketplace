@@ -22,9 +22,10 @@ How to handle user data?<br>
 ----Database User parameters----<br>
 
 --User Personal Info<br>
-*dbid<br>
- > id for database<br>
-*userid                             //usercontact for platform like UID in some games--<br> 
+>*dbid<br>
+ id for database
+*userid                             
+//usercontact for platform like UID in some games--<br> 
 public if and only account is user approved and for searching-- note: same role as 
 <br>userdisplayname but unique value<br>
 >>*Name (First, Middle I., Last)      //Note- Do not Forget Normalization and apply single value only<br>;
