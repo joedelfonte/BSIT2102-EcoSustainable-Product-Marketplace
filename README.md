@@ -78,4 +78,6 @@ login duration<br>
 
 Thats all for now!!<br>
 ohh the test branch if for testing some of my ideas <br>
+and if you want to save your changes to github just push to UPLOAD branch or create the branch,<br>
+or ask for leader to pull branch to main<br>
 Thats all now!<br>
