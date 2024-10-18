@@ -77,7 +77,43 @@ login duration<br>
     4.  )
 
 Thats all for now!!<br>
-ohh the test branch if for testing some of my ideas <br>
+ohh the 'test' branch is for testing some of my ideas <br>
 and if you want to save your changes to github just push to UPLOAD branch or create the branch,<br>
 or ask for leader to pull branch to main<br>
 Thats all now!<br>
+
+To DO List: <br>
+1. Create  Database with the ff.<br>
+    1. User<br>
+    2. Product<br>
+    3. Cart<br>
+    4. Different Access Account<br>
+    5. Shop<br>
+    6. Product<br>
+
+2. How php communicate with the database<br>
+    1. Using object 
+    > the parent is only the FF. the use like to verify first before releasing other info<br>
+        > username<br>
+        > password<br>
+        > UID<br>
+        > DatabaseID<br>
+        > Authority - (Private -- what privilage have same as parent) <br>  
+        > Status (Before Accesing account to verify if BAN, Deleted, or any possible restriction for account)<br>
+
+    2. Main Child/like eldest child and parent  <br>
+        > UID, (Protected) <br>
+        > DatabaseId - (Hidden or private and accesible for Database Engineer)<br>
+        > Username - (private)<br>
+        > UserDisplayName -  (Protected (optional)-- can be same as username)<br>
+        > Authority - (Private -- what privilage have same as parent)
+        > User Fingerprint (Private)
+        > (to be added)<br>
+
+3. how php respond to different user privilage<br>
+    1. Admin (Have access to all)<br>
+    2. Database Engineer / Manager (Data manipulation or Database Privilage)<br>
+    3. Store Owner (For Editing Goods Inside its authority)<br>
+    4. User or buyer (basic Privlage)<br>
+    5. Delivery Account (optional on final situation)(Autority to view basic goods information according to given number)<br>
+    6. (to be added)<br>
