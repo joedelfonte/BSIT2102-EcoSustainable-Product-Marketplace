@@ -49,7 +49,7 @@ class UserData {
         $dbResult = 0;
         //it request if the user input is correct or 
         //using query
-        //if found, set all data need in the parent class
+        //if found, request all data need to the parent class
         echo 'Class Authentication Passed!' ."<br>";
     }
 
