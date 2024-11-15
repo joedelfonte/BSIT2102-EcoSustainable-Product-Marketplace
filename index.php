@@ -9,6 +9,10 @@
     <div class="container">
         <form action="login.php" method="post">
             <h2>Login</h2>
+            
+            <?php  if(isset($_get['error'])) { ?>
+                <p class="error"> <?php echo $_get['error']; ?></p>
+                <?php } ?>
       
             <labe>User name</labe>
             <input type="text" name="username" placeholder="User name"><br>
