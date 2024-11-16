@@ -1,7 +1,6 @@
 <?php
 require_once('../database.php');
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $database1  = new Connection();
     $db = $database1->getdatabase();
@@ -18,15 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </head>
         <body>    
         <script>
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-                }).then(() => {
-                    window.location.href = 'addProductForm.php';
-                });
+
+            Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: 'Product Created',
+            showConfirmButton: true
+            }).then(() => {
+                window.location.href = 'addProductForm.php';
+            });
 
         </script>
 
@@ -35,5 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         ";
     }
     
+}   else {
 }
 ?>
