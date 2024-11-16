@@ -76,14 +76,10 @@ class LoginUserData extends UserData {
     
 };
 
-class LoginEditor extends UserData{
-    public function test(){
-        echo 'g';
-    }
-}
+
 
 $person = new LoginUserData('user1', 001);
-$person->test();
+$person->show();
  
 
 

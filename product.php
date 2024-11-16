@@ -1,10 +1,16 @@
 <?php
+require_once 'connect.php';
 
 class Product{
     protected $productId, $productname, $quantity, $price;
     protected $description, $seller; 
 
-    function __construct($id, $name, $quantity, $price){
+    function __construct(){
+        $tempconn = new Connection();
+        $tempconn->connect();
+    }
+
+    private function setData($id, $name, $quantity, $price){
         $this->productId = $id;
         $this->productname = $name;
         $this->quantity = $quantity;
@@ -30,21 +36,13 @@ class Product{
         return $seller;
     }
 
+}
+
+$test = new Product();
+
+//set data
+function getproduct(){
     
+
 }
-
-class GetDatabase extends Product {
-    private $database;
-
-    __construct(){
-        $conn = new mysqli('localhost', 'user', '', 'ecomarket');//connect to local database using xampp Mysql
-   
-        if ($conn) {//check if connection is established
-            echo "Connected successfully <br>";
-        } else { die("Connection failed ");}
-     
-    }
-}
-
-
 ?>
