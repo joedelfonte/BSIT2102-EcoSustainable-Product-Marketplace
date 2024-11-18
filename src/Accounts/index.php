@@ -61,7 +61,7 @@ class UserData {
 
 class LoginUserData extends UserData {
     //this class communicate all php or global requests
-    //This Class is a controller in login
+    //This Class is a controller
 
     function __construct($username, $pass){
         parent::__construct($username, $pass);
@@ -75,6 +75,8 @@ class LoginUserData extends UserData {
 
     
 };
+
+
 
 $person = new LoginUserData('user1', 001);
 $person->show();
