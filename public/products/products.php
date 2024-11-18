@@ -17,7 +17,7 @@
         <div class="product-list">
             <?php
             require_once ('../database.php');
-        
+            
             try {
                 $database1 = new Connection;
               //  $database1->dbConnect();
