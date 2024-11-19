@@ -26,7 +26,7 @@
                 if($result){
                     foreach($result as $row){
                         ?>  
-                        <div class="product">
+                        <!-- <div class="product"> -->
                             <img src="<?= $row["productImageLocation"];?>" alt="<?= $row["ProductName"];?>">
                             <h3><?= $row["ProductName"]; ?></h3>
                             <?= $row["description"];?>
