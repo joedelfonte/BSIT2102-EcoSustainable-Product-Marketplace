@@ -7,9 +7,10 @@ body {
 }
 
 .container {
-    width: 85%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
+    padding: 10px;
 }
 
 h1 {
@@ -24,7 +25,7 @@ h1 {
 }
 
 .product {
-    background: #fff;
+    background: white;
     border: 1px solid #ddd;
     margin: 10px;
     padding: 15px;
@@ -50,5 +51,6 @@ h1 {
     font-size: 1.2em;
     color: #000;
 }
+
 
 

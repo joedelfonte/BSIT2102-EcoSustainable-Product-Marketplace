@@ -27,13 +27,13 @@ class Connection{
         return $this->conn;
 
     }
-    public function show($table){
-        $query = "SELECT * FROM " .htmlspecialchars($table) .";";
-        $stmt = $this->conn->query($query);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $result;
-    } 
+    function _deconstruct() {
+        $this->conn = null;
+        return null;
+        echo 'Session Ended';
+    }
+    
 
 }
 

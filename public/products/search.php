@@ -1,3 +1,8 @@
+<?php
+require_once ('../../src/database.php');
+require_once ('../../src/crudDatabase.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +23,7 @@
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
                 <li class="nav-item"><a href="../home.php" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="products.php" class="nav-link link-body-emphasis px-2">Products</a></li>
+                <li class="nav-item"><a href="products/products.php" class="nav-link link-body-emphasis px-2">Products</a></li>
                 <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
             </ul>
@@ -42,19 +47,23 @@
     </header>
 </header>
 
-<div class="container">
+<?php
+
+if (isset($_GET['search'])) {
+    $searchvalue = htmlspecialchars($_GET['search']);
+?>
+
+    <div class="container">
     <h1>Eco Products</h1>
     <div class="product-list">
         <?php
-        require_once ('../../src/database.php');
-        require_once ('../../src/crudDatabase.php');
-
+        
         try {
             $database1 = new Connection();
             $products = new CrudProducts($database1->getDatabase());
                 
             //  $database1->dbConnect();
-            $result = $products->show('products');
+            $result = $products->search($searchvalue);
 
             if ($result) {
                 foreach ($result as $row) {
@@ -63,22 +72,26 @@
                         <img src="<?= $row["productImageLocation"]; ?>" alt="<?= $row["ProductName"]; ?>">
                         <h3><?= $row["ProductName"]; ?></h3>
                         <p><?= $row["description"]; ?></p>
-                        <h4 class="tags111"><?= $row["price"]; ?></h4>
-                        <button type="button">Learn More</button>
+                        <h4 class="price-tag"><?= $row["price"]; ?></h4>
                     </div>
                     <?php
                 }
-            } else {
+            } /* else {
                 ?>
                 <h1 class="no-product">No Product Found</h1>
                 <?php
-            }
+            } */
         } catch (PDOException $error) {
             echo 'Database Error! Report Problem.<br>';
+            echo $error->getMessage();
         }
         $database1->dbCloseConnection();
         ?>
     </div>
+<?php
+}
+?>
+
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">

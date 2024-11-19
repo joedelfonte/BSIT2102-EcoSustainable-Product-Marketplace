@@ -3,7 +3,7 @@ include_once('database.php');
 
 class CrudProducts{
     private $productName;
-    private $price = 'a';
+    private $price;
     private $quantity;
     private $description;
     private $productImage;
@@ -38,7 +38,43 @@ class CrudProducts{
                 return true;
             } else { return false;}
         } catch (Exeption $e)  { return false;}
-   }
+    }
+
+    public function show($table){
+
+        $query = "SELECT * FROM " .htmlspecialchars($table) .";";
+        $stmt = $this->conn->query($query);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function search($value){
+        $query = "SELECT * FROM products WHERE UPPER(ProductName) LIKE UPPER(:search);";
+        $value = "%" .$value ."%";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':search', $value);
+        
+        if ($stmt->execute()){
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } else { return false;}
+
+    }
+    
+    function __deconstruct(){
+    $this->productName = null;
+    $this->price = null;
+    $this->quantity = null;
+    $this->description = null;
+    $this->productImage = null;
+    $this->table = null;
+    $this->conn = null ;
+
+    }
+
+
+
 }
 
 ?>

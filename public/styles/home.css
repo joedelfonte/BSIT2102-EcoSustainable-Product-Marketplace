@@ -1,3 +1,6 @@
+.product span .price-tags {
+    color: green !important;
+  }
 
 .header-tops {
     background-color: #388E3C;   
@@ -37,12 +40,30 @@
   }
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
-    bottom: 3rem;
+    top: 15rem;
+    bottom: 30rem;
     z-index: 10;
   }
-  
+  .carousel-caption h1{
+    text-shadow: 9px 4px 9px rgba(0, 0, 0, 0.5);
+    font-size: 4rem;
+    font-style: italic;
+  }
+
+  .descript{
+    font-size: 25px;
+    color: #f8f9fa;
+    text-shadow: 10px 5px 4px rgba(0, 0, 0, 0.5);
+  }
+
   /* Declare heights because of positioning of img element */
   .carousel-item {
-    height: 32rem;
+    height: 48rem;
   }
+ 
+.image1 {
+    object-fit: contain;
+    object-position: top;
+    
+}
   

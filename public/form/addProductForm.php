@@ -61,8 +61,8 @@
 
 <!-- Add Product Process -->
 <?php
-    require_once('../../src/database.php');
-    require_once('../../src/crudDatabse.php');
+    require_once ('../../src/database.php');
+    require_once ('../../src/crudDatabase.php');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $database1  = new Connection();
