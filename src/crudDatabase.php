@@ -6,6 +6,8 @@ class CrudProducts{
     private $price;
     private $quantity;
     private $description;
+    private $storeId;
+    private $productCode;
     private $productImage;
     private $table = 'products';
     private $conn;
@@ -18,9 +20,11 @@ class CrudProducts{
    public function addProduct(){
         try {
             $productName = isset($_POST['productName']) ? htmlspecialchars(trim($_POST['productName'])) : '';
+            $productCode = isset($_POST['productCode']) ? htmlspecialchars(trim($_POST['productCode'])) : '';
+            $description = isset($_POST['description']) ? htmlspecialchars(trim($_POST['description'])) : '';
             $price = isset($_POST['price']) ? htmlspecialchars(trim($_POST['price'])) : '';
             $quantity = isset($_POST['quantity']) ? htmlspecialchars(trim($_POST['quantity'])) : '';
-            $description = isset($_POST['description']) ? htmlspecialchars(trim($_POST['description'])) : '';
+            $storeId = isset($_POST['storeId']) ? htmlspecialchars(trim($_POST['storeId'])) : '';
             $productImage = isset($_POST['imageUpload']) ? htmlspecialchars(trim($_POST['imageUpload'])) : '';
 
             if ($productName != '' && $price != '' && $quantity != ''){

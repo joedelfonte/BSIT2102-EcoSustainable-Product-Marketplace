@@ -73,6 +73,10 @@ if (isset($_GET['search'])) {
                         <h3><?= $row["ProductName"]; ?></h3>
                         <p><?= $row["description"]; ?></p>
                         <h4 class="price-tag"><?= $row["price"]; ?></h4>
+                        <form action="" method="get">
+                        <button type="button">Learn More</button>
+                        </form>
+                        
                     </div>
                     <?php
                 }

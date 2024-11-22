@@ -52,5 +52,17 @@ h1 {
     color: #000;
 }
 
+.view-product {
+    text-shadow: green ;
+    margin-bottom: 100px;
+    position: fixed;
+}
+
+.noProduct .h2 {
+    margin: 50px;
+    padding: 100px;
+    background-color: aqua;
+}
+
 
 

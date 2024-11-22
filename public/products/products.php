@@ -64,7 +64,11 @@
                         <h3><?= $row["ProductName"]; ?></h3>
                         <p><?= $row["description"]; ?></p>
                         <h4 class="tags111"><?= $row["price"]; ?></h4>
-                        <button type="button">Learn More</button>
+                        <form action="productDetails.php" method="GET">
+                            <input type="hidden" name="productlink" value="<?= $row["productCode"];?>">
+                            <button type="submit" class="view-product">Learns More</button>
+                        </form>
+                        
                     </div>
                     <?php
                 }

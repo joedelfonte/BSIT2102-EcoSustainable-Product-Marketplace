@@ -1,7 +1,7 @@
 <?php   
 class Connection{
     private $host = 'localhost';
-    private $dbname = 'ecomarketdatabase';
+    private $dbname = 'eco_market_database';
     private $username = 'userview';//default ay root
     private $password = 'viewonly';//defalut ay wala laman
     private $conn;
