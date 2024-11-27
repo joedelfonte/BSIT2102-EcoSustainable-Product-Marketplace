@@ -1,57 +1,82 @@
-    <style>
-        /* Set up a flexbox layout to center content */
-        body, html {
-            height: 100%;
-            margin: 0;
+//css for user profile
+<style>
+    
+body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
         }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        form {
+        .profile-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .profile-picture {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
             background-color: #f9f9f9;
-            width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 50px;
         }
-
-        h2 {
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .profile-details {
+            margin-left: 140px; /* Leave space for the image */
+        }
+        .profile-header {
             text-align: center;
+            margin-bottom: 20px;
         }
-
-        label {
+        .profile-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile-info {
+            margin-bottom: 15px;
+        }
+        .profile-info label {
             display: block;
-            margin: 10px 0 5px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
         }
-
-        input[type="text"] {
-            width: 90%;
-            padding: 8px;
-            margin: 5px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            width: 50%;
+        .profile-info span {
+            display: block;
+            background: #f9f9f9;
             padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
             border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: 70px;
+            border: 1px solid #ddd;
+        }
+        /* CSS to center a button */
+        button {
+         display: block;
+         margin: 0 auto; /* Centers the button horizontally */
+         padding: 10px 20px;
+         background-color: green; /* Button color */
+         color: white;
+         border: none;
+         border-radius: 5px;
+         font-size: 16px;
+         cursor: pointer;
+         text-align: center;
         }
 
-        button:hover {
-            background-color: #45a049;
+        .center-button:hover {
+        background-color: #0056b3; /* Hover effect */
         }
-    </style>
+
+</style>
