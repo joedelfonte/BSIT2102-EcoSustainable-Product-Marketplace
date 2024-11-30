@@ -17,7 +17,7 @@
     </script>
 </head>
 <body>
-    <h1>AJAX with PHP Examples</h1>
+    <h1>AJAX with PHP Examplesss</h1>
     <input type="text" id="searchQuery" onkeyup="search()" placeholder="Search...">
     <div id="results"></div>
 </body>
