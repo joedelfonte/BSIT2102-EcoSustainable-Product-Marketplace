@@ -1,0 +1,31 @@
+/* styles.css */
+.search-container {
+    width: 300px;
+    margin: 50px auto;
+}
+
+#search-results {
+    border: 1px solid #cccccc;
+    margin-top: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.result-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-results { 
+    background-color: white;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    width: 100%;
+}
+
+
