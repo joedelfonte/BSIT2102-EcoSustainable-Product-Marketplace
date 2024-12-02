@@ -6,7 +6,6 @@ class Users extends Database {
 
     function __construct(){
         parent::__construct();
-        //echo 'Database is Set';
     }
 
     //add ka na lang ng crud 
@@ -15,10 +14,9 @@ class Users extends Database {
         $sqlQuery = "Select * from users;";
         $result = $this->conn->query($sqlQuery);
         $row = $result->fetchall();
-        echo count($row);
 
         if (count($row) > 0) {
-            var_dump($row);
+            // var_dump($row);
             return $row;
         } else {
             echo 'No results';
