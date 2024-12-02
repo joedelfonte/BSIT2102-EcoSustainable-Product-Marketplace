@@ -1,22 +1,25 @@
 <?php 
-require_once('../database/database.php');
-require_once('../database/users/userCrud.php');
-require_once('currentUser.php');
+require_once ('config.php');
+require_once (ROOT_PATH .'\src\database\database.php');
+require_once (ROOT_PATH .'\src\users\userCrud.php');
 
-$test = new Database();?>
-
+//TEST DATABASE
+$test = new Database();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco-Market</title>
-    <link rel="icon" href="../../assets/icons/eco-logo.png" type="image/x-icon">
+    <link rel="icon" href="assets/icons/eco-logo.png" type="image/x-icon">
 
+    <!-- Bootstrap Css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/search.css">
-    <link rel="stylesheet" href="/src/products/singleProd.css">
+    
+    <!-- Load For Global Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/search.css">
     
     <!--J query -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -36,9 +39,10 @@ $test = new Database();?>
                 if (keyword.length > 0) {
                     $.ajax({
                         type: 'POST',
-                        url: '../searchHandler.php',
+                        url: 'assets/pageTemplate/searchHandler.php',
                         data: { 
-                            liveSearch: keyword },
+                            liveSearch: keyword 
+                        },
                         success: function(response) {
                             $('#search-results').html(response).show();
                         },
@@ -80,7 +84,7 @@ $test = new Database();?>
                     <div class="container d-flex flex-wrap justify-content-center">
                         <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                            <img src="../../assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" class="logo">
+                            <img src="assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" class="logo">
                             <span class="fs-4">Eco-MarketPlace</span>
                         </a>
                         <div class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
@@ -92,6 +96,3 @@ $test = new Database();?>
             </div>
 
     </header>     
-
-</body>
-</html>

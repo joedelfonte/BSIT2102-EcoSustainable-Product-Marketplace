@@ -1,4 +1,5 @@
 <?php
-// Define the root path
-define('ROOT_PATH', realpath(dirname(__FILE__)));
+// set the root for easy dir locating
+define('ROOT_PATH', dirname(__FILE__));
+//echo ROOT_PATH;
 ?>

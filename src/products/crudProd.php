@@ -1,5 +1,4 @@
 <?php
-
 require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH .'\src\database\database.php');
 
@@ -10,14 +9,15 @@ class Products extends Database {
     }
 
     //read
-    public function searchOnlyProducts($value, $comparison ,$column){
-        $query = "SELECT * FROM product WHERE LOWER($column)" ."LIKE " ."LOWER(:search);";
+    public function searchOnlyProducts($value, $column){
+        $query = "SELECT * FROM product WHERE LOWER($column)" ." LIKE " ."LOWER(:search);";
         $value = "%" .$value ."%";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':search', $value);
 
         if ($stmt->execute()){
             return $stmt->fetchAll(PDO::FETCH_ASSOC);;
+            echo 'Returning Value';
         } else { return false;}
 
     }
