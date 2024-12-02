@@ -47,7 +47,8 @@ class DatabaseSummary extends Database {
             return $row;
         } else {
             echo 'No results';
-            $row = null;
+            $srow = null;
+
         }
     }
 
