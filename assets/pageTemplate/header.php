@@ -89,7 +89,8 @@ $test = new Database();
                         </a>
                         <div class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
                             <input type="search" class="form-control" name="search " id="Search" placeholder="Search Product" aria-label="Search">
-                            <div id="search-results" class=""></div>
+                            <div id="search-results" class="">
+                            </div>
                         </div>
                     </div>
                 </header>

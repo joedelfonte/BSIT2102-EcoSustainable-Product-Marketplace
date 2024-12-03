@@ -1,6 +1,5 @@
 <?php
 require_once 'assets/pageTemplate/header.php';
-
 ?>
 <link rel="stylesheet" href="./assets/css/home-body.css">
 

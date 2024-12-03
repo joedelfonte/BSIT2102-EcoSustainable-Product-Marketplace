@@ -10,13 +10,15 @@ class Products extends Database {
 
     //read
     public function searchOnlyProducts($value, $column){
+        $value = isset($value) ? htmlspecialchars($value) : '';
         $query = "SELECT * FROM product WHERE LOWER($column)" ." LIKE " ."LOWER(:search);";
+
         $value = "%" .$value ."%";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':search', $value);
 
         if ($stmt->execute()){
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo 'Returning Value';
         } else { return false;}
 
