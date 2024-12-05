@@ -2,7 +2,7 @@
 
 class Database{
     private $host = 'localhost';
-    private $dbname = 'eco_market_database';
+    private $dbname = 'eco-marketbase-database';
     private $username = 'userview';//default ay root
     private $password = 'viewonly';//defalut ay wala laman
     protected $conn;
