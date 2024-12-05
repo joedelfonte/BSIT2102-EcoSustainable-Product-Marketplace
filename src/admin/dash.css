@@ -1,0 +1,25 @@
+/* #userChart {
+    width: 60% !important;
+    height: 60% !important;
+  } */
+
+  .user-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    /* height: 100vh; Full viewport height */
+    text-align: center;
+}
+
+.chart-users {
+    position: relative;
+    width: 80%; /* Adjust as needed */
+    max-width: 800px; /* Maximum width */
+    height: 50%; /* Adjust the height as needed */
+}
+
+.chart-user {
+    width: 100% !important;
+    height: 100% !important;
+}

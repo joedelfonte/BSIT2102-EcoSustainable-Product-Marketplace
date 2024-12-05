@@ -1,0 +1,44 @@
+.banner {
+    position: relative;
+    color: white;
+    margin-top: 0; /* Adjust as needed */
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+.banner .text-contain {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 35%;
+    height: 15%;
+    padding: 5px;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.banner .text {
+    font-size: 40px;
+}
+
+.banner .text-2 {
+    font-size: 20px;
+}
+
+.banner .button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner .button:hover {
+    background-color: #005f6b;
+}
