@@ -3,6 +3,15 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH .'\src\database\database.php');
 
 class Products extends Database {
+    private $code;
+    private $ProductName;
+    private $price;
+    private $description;
+    private $stock;
+    private $sellerId;
+    private $categoryId;
+    private $statusId;
+    private $imangeDir;
 
     public $queryResult;
 
@@ -11,14 +20,11 @@ class Products extends Database {
     }
 
     //create
-    // public function isAddProduct(){
-    //     //clean data
-    //     $query = "INSERT INTO `product`(`ProductName`, `productCode`, `description`, `price`, `quantity`, `store_id`, `category_id`, `status_id`, `imageDir`) 
-    //                 VALUES (:name, )"
-    // }
-
-
-
+    public function addProduct(){
+        //clean data
+        $query = "INSERT INTO `product`(`ProductName`, `productCode`, `description`, `price`, `quantity`, `store_id`, `category_id`, `status_id`, `imageDir`) 
+                    VALUES (:name, )";
+    }
 
     //read
     public function searchProducts($value, $column){
@@ -51,12 +57,10 @@ class Products extends Database {
 
         if ($stmt->execute()){
             $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($res);
+            // var_dump($res);
             return $res;
         } else { return false;}
 
     }
 }
-
-
 ?>

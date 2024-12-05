@@ -1,10 +1,15 @@
-<link rel="stylesheet" href="singleProd.css">
 <?php
     require_once realpath(dirname(__FILE__) . '/../../config.php');
     require_once('crudProd.php');
-    require_once ROOT_PATH .'\assets\header.php';
-    // require_once('../database/database.php');
-    //require('../../assets/header.php');
+    require ROOT_PATH .'/assets/pageTemplate/header.php';
+?>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="singleProd.css">
+
+<?php
+
+
     try {
         if (!empty($_GET['product'])){
             $ltemp = strlen($_GET['product']);
@@ -30,7 +35,7 @@
                                         <!-- <form action="AddtoCart.php" method="POST"> -->
                                             <h1 class="product-title"><?= $row['ProductName']?></h1>
                                             <p class="product-description"><?= $row['description']?></p>
-                                            <div class="product-price">Price : <?= $row['price']?></div>
+                                            <div class="product-price">Price : &#8369 <?=$row['price']?></div>
                                             <div>Stocks :<?= $row['quantity']?></div>
                                             <div class="quantity-container">
                                                 <span>Quantity :</span>
@@ -54,7 +59,34 @@
                                                             userEcoId : '1'
                                                         
                                                         },
+                                                        
+                                                        success: function(response){
+                                                            
+                                                            responseObject = JSON.parse(response);
+                                                            console.log('response:', responseObject.status);
+                                                            if (responseObject.status == 'success'){
+                                                                Swal.fire({
+                                                                    title: 'Success',
+                                                                    text: responseObject.message,
+                                                                    icon: 'success',
+                                                                    confirmButtonText: 'OK'
+                                                                });
+                                                            }  else {
+                                                                Swal.fire({
+                                                                    title: 'Error',
+                                                                    text: responseObject.message,
+                                                                    icon: 'error',
+                                                                    confirmButtonText: 'OK'
+                                                                });
+                                                            }
+                                                        },
                                                         error: function(xhr, status, error) { 
+                                                            Swal.fire({
+                                                                title: 'Error!',
+                                                                text: 'Product is Not Added Cart!',
+                                                                icon: 'error',
+                                                                confirmButtonText: 'OK'
+                                                            });
                                                             console.error('Failed to Fetch Data: ' + error); 
                                                         }
                                                     });
