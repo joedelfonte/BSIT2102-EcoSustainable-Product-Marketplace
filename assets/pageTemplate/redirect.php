@@ -1,4 +1,8 @@
 <?php
-header()
+if ($_GET['code']) {
+    echo 'hahahha';
+
+}
+
 
 ?>

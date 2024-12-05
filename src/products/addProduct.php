@@ -5,7 +5,6 @@
         
         $user = new ProductCrud();
 
-
         if (!$user->addProduct()) {
             echo "
             <!DOCTYPE html>
@@ -14,9 +13,10 @@
                 <meta charset='UTF-8'>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
                 <title>Product Creation Failed</title>
-                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                
             </head>
             <body>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
             <script>
                 Swal.fire({
                     position: 'center',

@@ -1,17 +1,18 @@
+<link rel="stylesheet" href="singleProd.css">
 <?php
     require_once realpath(dirname(__FILE__) . '/../../config.php');
     require_once('crudProd.php');
-    echo '1';
+    require_once ROOT_PATH .'\assets\header.php';
     // require_once('../database/database.php');
     //require('../../assets/header.php');
     try {
-        if (isset($_GET['code'])){
-            $ltemp = strlen($_GET['code']);
+        if (!empty($_GET['product'])){
+            $ltemp = strlen($_GET['product']);
             
             if ($ltemp = 7){
-                $code = htmlspecialchars(trim($_GET['code']));
+                $code = htmlspecialchars(trim($_GET['product']));
                 $product = new Products();
-                $result = $product->selectProducts($code, 1);
+                $result = $product->readAll($code, 1);
                 $prodImg = $row['imageDir'] = null ? $row['imageDir'] : '';
 
                     if ($result) {
@@ -26,16 +27,41 @@
                                         //var_dump($result);
                                         foreach($result as $row){
                                         ?>
-                                        <h1 class="product-title"><?= $row['ProductName']?></h1>
-                                        <p class="product-description"><?= $row['description']?></p>
-        
-                                        <div class="product-price">Price : <?= $row['price']?></div>
-                                        <div>Stocks :<?= $row['quantity']?></div>
-                                        <div class="quantity-container">
-                                            <span>Quantity :</span>
-                                            <input type="number" id="quantity" value="1" min="1">
-                                        </div><br>
-                                        <button class="add-to-cart-btn">Add to Cart</button>
+                                        <!-- <form action="AddtoCart.php" method="POST"> -->
+                                            <h1 class="product-title"><?= $row['ProductName']?></h1>
+                                            <p class="product-description"><?= $row['description']?></p>
+                                            <div class="product-price">Price : <?= $row['price']?></div>
+                                            <div>Stocks :<?= $row['quantity']?></div>
+                                            <div class="quantity-container">
+                                                <span>Quantity :</span>
+                                                <input type="number" id="quantity" name="addHowMany" value="1" min="1">
+                                                
+                                            </div><br>
+                                            
+                                            <button type="submit" id="addCart" name="AddToCart" class="add-to-cart-btn">Add to Cart</button>
+                                        <!-- </form> -->
+
+                                        <script>
+                                            $(document).ready(function() {
+                                                const thisProduct = "<?= $row['productCode'];?>";
+                                                $('#addCart').on('click', function() {
+                                                    $.ajax({
+                                                        url: 'AddtoCart.php',
+                                                        type: 'POST',
+                                                        data: { 
+                                                            productCode : thisProduct,
+                                                            count : "#quantity",
+                                                            userEcoId : '1'
+                                                        
+                                                        },
+                                                        error: function(xhr, status, error) { 
+                                                            console.error('Failed to Fetch Data: ' + error); 
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+                                        
                                         <?php
                                         }
                                     ?>

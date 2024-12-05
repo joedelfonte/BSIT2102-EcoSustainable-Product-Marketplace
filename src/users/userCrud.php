@@ -1,4 +1,6 @@
 <?php
+require_once '../../config.php';
+require_once(ROOT_PATH . '/src/database/database.php');
 
 class Users extends Database {
 
@@ -8,7 +10,7 @@ class Users extends Database {
 
     //add ka na lang ng crud 
     //ito ang read
-    function read(){
+    function readAll(){
         $sqlQuery = "Select * from users;";
         $result = $this->conn->query($sqlQuery);
         $row = $result->fetchall();
