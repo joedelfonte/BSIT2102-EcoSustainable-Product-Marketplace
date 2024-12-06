@@ -1,5 +1,6 @@
 <?php 
 require_once(ROOT_PATH .'\src\products\crudProd.php');
+require_once(ROOT_PATH .'\src\users\userCrud.php');
 require_once('allUsersCount.php');
 
 $userAll = new Users();

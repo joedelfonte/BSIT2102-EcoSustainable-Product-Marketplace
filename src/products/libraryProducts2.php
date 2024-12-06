@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../assets/css/library.css">
 <?php
 require_once ('./../../config.php');
-require_once(ROOT_PATH .'\src\products\crudProd.php');
+require_once(ROOT_PATH .'\src\database\crudProd.php');
 require_once ROOT_PATH .'/assets/pageTemplate/header.php';
 
 try {
