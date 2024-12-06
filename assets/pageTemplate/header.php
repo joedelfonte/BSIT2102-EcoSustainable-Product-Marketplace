@@ -10,14 +10,14 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco-Market</title>
-    <link rel="icon" href="/currdir/BSIT2102_EcoSustainable_Product_Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" type="image/x-icon">
+    <link rel="icon" href="/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" type="image/x-icon">
 
     <!-- Bootstrap Css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
     <!-- Load For Global Css -->
-    <link rel="stylesheet" href="/currdir/BSIT2102_EcoSustainable_Product_Marketplace/assets/css/style.css">
-    <link rel="stylesheet" href="/currdir/BSIT2102_EcoSustainable_Product_Marketplace//assets/css/search.css">
+    <link rel="stylesheet" href="/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/css/style.css">
+    <link rel="stylesheet" href="/project/BSIT2102-EcoSustainable-Product-Marketplace//assets/css/search.css">
     
     <!--J query -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                 if (keyword.length > 0) {
                     $.ajax({
                         type: 'POST',
-                        url: '/currdir/BSIT2102_EcoSustainable_Product_Marketplace/assets/pageTemplate/searchHandler.php',
+                        url: '/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/pageTemplate/searchHandler.php',
                         data: { 
                             liveSearch: keyword 
                         },
@@ -71,8 +71,8 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
         <nav class="py-2 border-bottom header-tops">
             <div class="container d-flex flex-wrap">
                     <ul class="nav me-auto">
-                        <li class="nav-item"><a href="index.php" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
-                        <li class="nav-item"><a href="products/products.php" class="nav-link link-body-emphasis px-2">Products</a></li>
+                        <li class="nav-item"><a href="\project\BSIT2102-EcoSustainable-Product-Marketplace?page=1" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
+                        <li class="nav-item"><a href="\project\BSIT2102-EcoSustainable-Product-Marketplace\src\products\libraryProducts2.php?page=1" class="nav-link link-body-emphasis px-2">Products</a></li>
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
                     </ul>
@@ -86,11 +86,11 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                     <div class="container d-flex flex-wrap justify-content-center">
                         <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                            <img src="/currdir/BSIT2102_EcoSustainable_Product_Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" class="logo">
+                            <img src="/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" class="logo">
                             <span class="fs-4">Eco-MarketPlace</span>
                         </a>
                         <div class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-                            <form action="/currdir/BSIT2102_EcoSustainable_Product_Marketplace/src\products\libraryProduct.php">
+                            <form action="/project/BSIT2102-EcoSustainable-Product-Marketplace/src\products\libraryProduct.php">
                             <input type="search" class="form-control" name="search" id="Search" placeholder="Search Product" aria-label="Search">
                             </form>
                             <div id="search-results" class="">

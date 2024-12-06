@@ -1,8 +1,8 @@
 <title>DashBoard</title>
 <?php
-require_once '../../config.php';
+require_once ('./../../config.php');
 require_once(ROOT_PATH .'\src\database\database.php');
-require_once(ROOT_PATH .'\assets\header.php');
+require_once(ROOT_PATH .'\assets\pageTemplate\header.php');
 ?>
 
 <!-- Chart Js -->

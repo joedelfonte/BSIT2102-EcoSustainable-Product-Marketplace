@@ -1,6 +1,6 @@
 <?php
     require_once realpath(dirname(__FILE__) . '/../../config.php');
-    require_once('crudProd.php');
+    require_once(ROOT_PATH .'/src/database/crudProd.php');
     require ROOT_PATH .'/assets/pageTemplate/header.php';
 ?>
 
@@ -51,17 +51,16 @@
                                                 const thisProduct = "<?= $row['productCode'];?>";
                                                 $('#addCart').on('click', function() {
                                                     $.ajax({
-                                                        url: 'AddtoCart.php',
                                                         type: 'POST',
+                                                        url: "/project/BSIT2102-EcoSustainable-Product-Marketplace/src/products/AddtoCart.php",
                                                         data: { 
                                                             productCode : thisProduct,
-                                                            count : "#quantity",
+                                                            count : "quantity",
                                                             userEcoId : '1'
                                                         
                                                         },
                                                         
                                                         success: function(response){
-                                                            
                                                             responseObject = JSON.parse(response);
                                                             console.log('response:', responseObject.status);
                                                             if (responseObject.status == 'success'){
@@ -81,12 +80,6 @@
                                                             }
                                                         },
                                                         error: function(xhr, status, error) { 
-                                                            Swal.fire({
-                                                                title: 'Error!',
-                                                                text: 'Product is Not Added Cart!',
-                                                                icon: 'error',
-                                                                confirmButtonText: 'OK'
-                                                            });
                                                             console.error('Failed to Fetch Data: ' + error); 
                                                         }
                                                     });
