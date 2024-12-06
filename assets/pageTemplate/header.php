@@ -3,8 +3,8 @@ session_start();
 // echo $_SESSION['success'];
 // echo $_SESSION['email'];
 require_once realpath(dirname(__FILE__) . '/../../config.php');
-// require_once (ROOT_PATH .'\src\database\database.php');
-// require_once (ROOT_PATH .'\src\users\userCrud.php');
+// require_once(ROOT_PATH .'\src\login\verifyUser.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -80,18 +80,24 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
                     </ul>
                     <?php
-                    if ($_SESSION['status']){
-                        echo '
-                            <ul class="nav">
-                        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
-                    </ul>';
-                    } else {
+
+                    
+                    // echo $_SESSION['status'];
+                    if (isset($_SESSION['status']) && isset($_SESSION['email']) ){
                         echo '
                         <ul class="nav">
-                             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">User Profile</a></li>
-                             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Log Out</a></li>
+                            <li class="nav-item nav-link link-body-emphasis px-2">' .$_SESSION['user'] .'</li>
+                             <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\users\userprofile.php" class="nav-link link-body-emphasis px-2">User Profile</a></li>
+                             <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\logout.php" class="nav-link link-body-emphasis px-2">Log Out</a></li>
                         </ul>';
+                    } else {
+                        echo '
+                            <ul class="nav">
+                        <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\index.php" class="nav-link link-body-emphasis px-2">Login</a></li>
+                        <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\register_form.php" class="nav-link link-body-emphasis px-2">Sign up</a></li>
+                        </ul>';
+
+                        
                     }
                     ?>
                     

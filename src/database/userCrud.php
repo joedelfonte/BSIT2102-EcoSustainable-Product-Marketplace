@@ -1,23 +1,33 @@
 <?php
-require_once '../../config.php';
+require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH . '/src/database/database.php');
 
 class Users extends Database {
     private $table = 'users';
     private $queryResult;
-    private $nickname;
-    private $gender;
-    private $role_id;
-    private $email;
-    private $address;
-    private $profileImage;
-    private $DateCreated;
-    private $username;
-    private $password;
 
     function __construct(){
         parent::__construct();
     }
+
+    public function getconn(){
+        return $this->conn;
+    }
+
+    public function addAccount($email, $password) {
+        $email = isset($email) ? htmlspecialchars($email) : '';
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        $mysql = "INSERT INTO users (`role_id`, `email`, `status_id`, `password`) 
+                  VALUES (1, :email, 1, :password)";
+    
+        $stmt = $this->conn->prepare($mysql);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashedPassword);
+    
+        return $stmt->execute();
+    }
+    
 
     public function search($value, $column){
         $value = isset($value) ? htmlspecialchars($value) : '';
@@ -35,14 +45,14 @@ class Users extends Database {
         }
     }
 
-    function readAll($id){
-        $sqlQuery = "SELECT * FROM users WHERE EcoId = :ID;";
+    public function readAll($id){
+        $sqlQuery = "SELECT * FROM users WHERE id = :ID;";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->bindParam(':ID', $id);
 
         if ($stmt->execute()){
             $this->queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+
             if (empty($this->queryResult)){
                 return false;
             } else {
@@ -53,35 +63,64 @@ class Users extends Database {
         }
     }
 
-    public function updateUserProfile($ecoId, $username, $nickname, $gender, $email, $address){
-        // Store data in variables
-        $this->ecoId = htmlspecialchars($ecoId);
-        $this->username = htmlspecialchars($username);
-        $this->nickname = htmlspecialchars($nickname);
-        $this->gender = htmlspecialchars($gender);
-        $this->email = htmlspecialchars($email);
-        $this->address = htmlspecialchars($address);
+    public function readLog($email){
+        $sqlQuery = "SELECT * FROM users WHERE email = :ID;";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(':ID', $email);
 
-        // Update query
-        $query = "UPDATE `users` SET 
-                    `username` = :username,
-                    `nickname` = :nickname,
-                    `gender` = :gender,
-                    `email` = :email,
-                    `address` = :address
-                  WHERE EcoId = :ecoId;";
+        if ($stmt->execute()){
+            $this->queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Prepare and bind parameters
+            if (empty($this->queryResult)){
+                return false;
+            } else {
+                return $this->queryResult;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function updateUserProfile($ecoId, $username, $name, $gender, $address){
+        echo $ecoId;
+        $query = "UPDATE users SET 
+                    username = :username,
+                    Name = :name,
+                    gender = :gender,
+                    address = :address
+                    WHERE id = :Id";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':ecoId', $this->ecoId);
-        $stmt->bindParam(':username', $this->username);
-        $stmt->bindParam(':nickname', $this->nickname);
-        $stmt->bindParam(':gender', $this->gender);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':address', $this->address);
+        $stmt->bindParam(':Id', $ecoId);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':gender', $gender);
+        // $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':address', $address);
 
-        // Execute the statement
-        return $stmt->execute();
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return "Query Excecution Error: " . $e->getMessage();
+        }
+
+        
+    }
+
+    public function delete($id){
+        $sqlQuery = "DELETE FROM users WHERE EcoId = :ID;";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(':ID', $id);
+
+        if ($stmt->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>

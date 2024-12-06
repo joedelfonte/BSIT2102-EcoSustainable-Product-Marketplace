@@ -1,28 +1,30 @@
 <?php
 session_start();
-echo $_SESSION['EcoId'];
+// echo $_SESSION['Id'];
 require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH .'\src\database\userCrud.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
-    $nickname = isset($_POST['nickname']) ? htmlspecialchars($_POST['nickname']) : '';
+    $name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
     $gender = isset($_POST['gender']) ? htmlspecialchars($_POST['gender']) : '';
-    $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+    // $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
     $address = isset($_POST['address']) ? htmlspecialchars($_POST['address']) : '';
-    $ecoId = 'ECO0002'; // Assuming the EcoId is known or retrieved from session or other source
+    $ecoId = $_SESSION['Id'];
 
-    // Create an instance of the Users class and establish a connection
+    // echo $gender;
     $db = new Users();
 
     try {
-        // Update the user profile in the database
-        $updateStatus = $db->updateUserProfile($ecoId, $username, $nickname, $gender, $email, $address);
+        $updateStatus = $db->updateUserProfile($ecoId, $username, $name, $gender, $address);
 
         if ($updateStatus) {
-            echo 'Profile updated successfully';
+            echo json_encode($updateStatus);
+
+            ?>// echo $updateStatus;
+            <?php
         } else {
-            echo 'Failed to update profile';
+            echo json_encode('error' + $updateStatus);
         }
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();

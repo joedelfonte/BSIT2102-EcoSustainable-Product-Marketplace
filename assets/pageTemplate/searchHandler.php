@@ -9,7 +9,7 @@ try {
         $sVar = htmlspecialchars($_POST['liveSearch']);
         $searchDump = new Products();
     
-        $result = $searchDump->searchProducts($sVar, 'ProductName');
+        $result = $searchDump->search($sVar, 'ProductName');
     
         // var_dump($result);
         if ($result){
