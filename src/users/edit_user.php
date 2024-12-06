@@ -179,7 +179,6 @@ if ($pdo) {
 
                 <input type="submit" value="Update">
             </form>
-            <!-- Escape button replaced with an anchor tag styled as a button -->
             <a href="/project\BSIT2102-EcoSustainable-Product-Marketplace/src/admin/showinfo.php" class="exit-button">Back to User Info</a>
         <?php endif; ?>
     </div>
