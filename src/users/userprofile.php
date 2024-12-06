@@ -2,15 +2,16 @@
 <?php
 require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once ROOT_PATH .'/assets/pageTemplate/header.php';
-require_once(ROOT_PATH .'\src\database\userCrud.php'); // Include the database connection file
+require_once(ROOT_PATH .'\src\database\userCrud.php');
+// require_once(ROOT_PATH .'\src\login\verifyUser.php');
 
 try {
-
-    // Create an instance of the Database class and establish a connection
-$db = new Users();
-$user = $db->readAll('ECO0002');
-    if (empty($user)|| count($user) > 1){throw new Exception('Invalid Parametrs Gather in database');}
-    foreach($user as $row){
+$db = new Users();//Call or Intantiate 
+$user = $db->readAll($_SESSION['Id']);
+    if (empty($user)|| count($user) > 1){
+        throw new Exception('Invalid Parametrs Gather in database');}
+    for ($i = 0; $i < 1; $i++) { 
+        $row = $user[$i];
 ?>
     <title>User Profile</title>
     <link rel="stylesheet" href="style.css">
@@ -24,12 +25,12 @@ $user = $db->readAll('ECO0002');
                 <h1>User Profile</h1>
             </div>
             <div class="profile-info">
-                <label for="username">Username:</label>
-                <span id="username"><?php echo htmlspecialchars($row['username']); ?></span>
+                <label for="name">Name:</label>
+                <span id="name"><?php echo htmlspecialchars($row['Name']); ?></span>
             </div>
             <div class="profile-info">
-                <label for="nickname">Nickname:</label>
-                <span id="nickname"><?php echo htmlspecialchars($row['nickname']); ?></span>
+                <label for="username">Username:</label>
+                <span id="username"><?php echo htmlspecialchars($row['username']); ?></span>
             </div>
             <div class="profile-info">
                 <label for="gender">Gender:</label>
@@ -51,9 +52,11 @@ $user = $db->readAll('ECO0002');
     }
 } catch (Exception $err){
     echo 'Error';
-
+    session_destroy();
+    include ROOT_PATH .'\assets\pageTemplate\error.html';
+    ?>
+    <meta http-equiv="refresh" content="2; URL=/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\login.php">
+    <?php
 }
 
-
-// Fetch user data from the `users` table
 ?>

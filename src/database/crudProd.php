@@ -62,6 +62,17 @@ class Products extends Database {
         } else { return false;}
 
     }
+    public function delete($id){
+        $mysql = "DELETE FROM product WHERE productCode = :ID;";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(':ID', $id);
+
+        if ($stmt->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function __deconstruct(){
         $this->conn = null;

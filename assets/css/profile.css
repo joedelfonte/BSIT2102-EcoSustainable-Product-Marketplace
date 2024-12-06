@@ -53,16 +53,23 @@
     border: 1px solid #ddd;
 }
 /* CSS to center a button */
-button {
+.edit-but {
     padding: 10px 20px;
     background-color: green; 
-    color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-align: center;
     margin: 0 10px; 
+}
+
+.edit-red {
+    margin-left: 50px;
+    padding: 10px 10px;
+    background-color: red;
+    cursor: pointer; 
+    border-radius: 5px;
 }
 
 .button-container {
