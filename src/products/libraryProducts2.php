@@ -2,18 +2,13 @@
 <?php
 require_once ('./../../config.php');
 require_once(ROOT_PATH .'\src\products\crudProd.php');
+require_once ROOT_PATH .'/assets/pageTemplate/header.php';
 
-// // Redirect to home page if user is not logged in
-// if (!isset($_SESSION['user'])) {
-//     // echo '<meta http-equiv="refresh" content="0;url=\project\BSIT2102-EcoSustainable-Product-Marketplace\src\products\libraryProducts2.php?page=1">';
-//     exit; // Stop further script execution
-// }
-
-    $setOffset = 0;
+try {
     $searchDump = new Products();
-    if (isset($_GET['search']) && isset($_GET['page'])){
-        $searchVar = htmlspecialchars($_GET['search']);
-        $setoffset = htmlspecialchars($_GET['page']);
+    if (isset($_GET['search']) != '' && isset($_GET['page'])){
+        $searchVar = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
+        $offset = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 1;
 
         ?>
         <div class='container-l'>
@@ -21,7 +16,8 @@ require_once(ROOT_PATH .'\src\products\crudProd.php');
         <div class="product-grid">
         <?php
     } else if (isset($_GET['page'])){
-        $setOffset = htmlspecialchars($_GET['page']) * 9;
+        $setoffset = isset($_GET['page']) ? htmlspecialchars($_GET['page']) * 9 : 0;
+        $setOffset = $_GET['page'];
         $searchVar = '';
         ?>
         <div class='container-l'>
@@ -29,18 +25,12 @@ require_once(ROOT_PATH .'\src\products\crudProd.php');
         <div class="product-grid">
         <?php
     } else {
-        // $setOffset = htmlspecialchars($_GET['page']) * 9;
-        $searchVar = '';
-        ?>
-        <div class='container-l'>
-        <h1>All Products</h1><br>
-        <div class="product-grid">
-        <?php
+        throw new Exception('Error Link');
     }
 
-    $resultTemp = $searchDump->searchProducts($searchVar, 'ProductName',);
+    $resultTemp = $searchDump->searchProducts($searchVar, 'ProductName');
 
-    for ($i = 0; $i < count($resultTemp) && $i < 10; $i++) { 
+    for ($i = $setOffset; $i < 10; $i++) { 
         $row = $resultTemp[$i];
     ?>
         <a href="productDetails.php?product=<?= $row['productCode'];?>&auth=1">
@@ -56,4 +46,13 @@ require_once(ROOT_PATH .'\src\products\crudProd.php');
     <?php
     }
 
-?>
+    if ((count($resultTemp) % 10) == 0) {
+        $totalPages = (count($resultTemp) / 10);
+    } else {
+        $totalPages = (count($resultTemp) / 10) + 1;
+    }
+
+} catch (Exception $err){
+    error_log($err);
+    include (ROOT_PATH .'/assets/pageTemplate/error.html');
+}
