@@ -1,6 +1,6 @@
-
 <?php
-    //start PHP session
+require_once realpath(dirname(__FILE__) . '/../../config.php');
+
     session_start();
   
     //check if login form is submitted
@@ -26,14 +26,22 @@
                 //validate inputted password with $user password
                 if(password_verify($password, $user['password'])){
                     //action after a successful login
-                    $_SESSION['success'] = 'User verification successful';
+                    $_SESSION['success'] = 'Login Successful';
+                    $_SESSION['status'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['password'] = $password;
+
+                    //Joedel add
+                    require_once realpath(dirname(__FILE__) . '/../../config.php');
+                    echo '<meta http-equiv="refresh" content="0;url=\project\BSIT2102-EcoSustainable-Product-Marketplace\index.php">'; 
+                    exit; // Stop further script execution
                 }
                 else{
                     //return the values to the user
                     $_SESSION['email'] = $email;
                     $_SESSION['password'] = $password;
-  
                     $_SESSION['error'] = 'Incorrect password';
+                    $_SESSION['status'] = false;
                 }
   
             }

@@ -1,3 +1,6 @@
+<?php
+include_once 'header.php';
+?>
 <body>
     <div class="product-container">
         <div class="product-details">

@@ -1,7 +1,7 @@
 <?php
 // echo realpath(dirname(0));
 require_once realpath(dirname(__FILE__) . '/../../config.php');
-require_once(ROOT_PATH .'\src\products\crudProd.php');
+require_once(ROOT_PATH .'\src\database\crudProd.php');
 // echo 'Hello reading file';
 
 try {
