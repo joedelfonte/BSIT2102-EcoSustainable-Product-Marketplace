@@ -6,19 +6,16 @@ require_once ROOT_PATH .'/assets/pageTemplate/header.php';
 
 try {
     $searchDump = new Products();
-    if (isset($_GET['search']) != '' && isset($_GET['page'])){
+    if (isset($_GET['search']) != '' || isset($_GET['page'])){
         $searchVar = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
-        $offset = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 1;
 
         ?>
         <div class='container-l'>
-        <h1>Showing related Results for '<?= $searchVar;?>'</h1>
+        <h1>Showing related Results for '<?= $searchVar;?>'</h1><br>
         <div class="product-grid">
         <?php
     } else if (isset($_GET['page'])){
-        $setoffset = isset($_GET['page']) ? htmlspecialchars($_GET['page']) * 9 : 0;
-        $setOffset = $_GET['page'];
-        $searchVar = '';
+        $searchVar = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
         ?>
         <div class='container-l'>
         <h1>All Products</h1><br>
@@ -28,9 +25,9 @@ try {
         throw new Exception('Error Link');
     }
 
-    $resultTemp = $searchDump->searchProducts($searchVar, 'ProductName');
+    $resultTemp = $searchDump->search($searchVar, 'ProductName');
 
-    for ($i = $setOffset; $i < 10; $i++) { 
+    for ($i = 0; $i < count($resultTemp); $i++) { 
         $row = $resultTemp[$i];
     ?>
         <a href="productDetails.php?product=<?= $row['productCode'];?>&auth=1">

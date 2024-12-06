@@ -27,7 +27,7 @@ class Products extends Database {
     }
 
     //read
-    public function searchProducts($value, $column){
+    public function search($value, $column){
         $value = isset($value) ? htmlspecialchars($value) : '';
         $query = "SELECT id, ProductName, description, productCode, price, imageDir FROM product WHERE LOWER($column)" ." LIKE " ."LOWER(:search);";
 
@@ -61,6 +61,20 @@ class Products extends Database {
             return $res;
         } else { return false;}
 
+    }
+
+    function __deconstruct(){
+        $this->conn = null;
+        $this->code = null;
+        $this->ProductName = null;
+        $this->price = null;
+        $this->description = null;
+        $this->stock = null;
+        $this->sellerId = null;
+        $this->categoryId = null;
+        $this->statusId = null;
+        $this->imangeDir = null;
+        $this->$queryResult = null;
     }
 }
 ?>

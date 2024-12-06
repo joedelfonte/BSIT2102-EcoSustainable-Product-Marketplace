@@ -31,8 +31,9 @@
                 //return the values to the user
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
-                $_SESSION['confirm'] = $confirm;
-  
+                $_SESSION['confirm'] = 'Account Created';
+                $_SESSION['status'] = 'true';
+                
                 //display error
                 $_SESSION['error'] = 'Email already taken';
             }

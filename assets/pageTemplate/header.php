@@ -1,4 +1,7 @@
 <?php 
+session_start();
+// echo $_SESSION['success'];
+// echo $_SESSION['email'];
 require_once realpath(dirname(__FILE__) . '/../../config.php');
 // require_once (ROOT_PATH .'\src\database\database.php');
 // require_once (ROOT_PATH .'\src\users\userCrud.php');
@@ -76,10 +79,22 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
                     </ul>
-                    <ul class="nav">
+                    <?php
+                    if ($_SESSION['status']){
+                        echo '
+                            <ul class="nav">
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
-                    </ul>
+                    </ul>';
+                    } else {
+                        echo '
+                        <ul class="nav">
+                             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">User Profile</a></li>
+                             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Log Out</a></li>
+                        </ul>';
+                    }
+                    ?>
+                    
                     </div>
                 </nav>
                 <header class="py-3 mb-4 border-bottom header-top">
@@ -90,7 +105,9 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                             <span class="fs-4">Eco-MarketPlace</span>
                         </a>
                         <div class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-                            <form action="/project/BSIT2102-EcoSustainable-Product-Marketplace/src\products\libraryProduct.php">
+                            <input type="hidden" name="page" value='1'>
+                            <form action="/project/BSIT2102-EcoSustainable-Product-Marketplace/src\products\libraryProducts2.php?">
+
                             <input type="search" class="form-control" name="search" id="Search" placeholder="Search Product" aria-label="Search">
                             </form>
                             <div id="search-results" class="">
