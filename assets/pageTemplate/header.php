@@ -79,9 +79,7 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
                         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
                     </ul>
-                    <?php
-
-                    
+                    <?php                    
                     // echo $_SESSION['status'];
                     if (isset($_SESSION['status']) && isset($_SESSION['email']) ){
                         echo '
@@ -96,8 +94,12 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
                         <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\index.php" class="nav-link link-body-emphasis px-2">Login</a></li>
                         <li class="nav-item"><a href="/project\BSIT2102-EcoSustainable-Product-Marketplace\src\login\register_form.php" class="nav-link link-body-emphasis px-2">Sign up</a></li>
                         </ul>';
+                    }
 
-                        
+                    if ($_SESSION['grant'] = 1){
+                        echo '<ul class="nav">
+                             <li class="nav-item"><a href="\project\BSIT2102-EcoSustainable-Product-Marketplace\src\admin\showinfo.php" class="nav-link link-body-emphasis px-2">DashBoard</a></li>
+                            </ul>';
                     }
                     ?>
                     

@@ -31,12 +31,13 @@ if (isset($_POST['login'])) {
                 $_SESSION['email'] = $email;
                 $_SESSION['grant'] = $user['role_id'];
 
-                if ($user['role_id'] = 1){//admin
-                     
-                } else {
-                    echo '<meta http-equiv="refresh" content="0;url=/project/BSIT2102-EcoSustainable-Product-Marketplace/index.php">';
+                // if ($user['role_id'] = 1){//admin
+                //     // echo '<meta http-equiv="refresh" content="0;url=\project\BSIT2102-EcoSustainable-Product-Marketplace\src\admin\showinfo.php">';
+                //     // exit;
+                // } else {
+                echo '<meta http-equiv="refresh" content="0;url=/project/BSIT2102-EcoSustainable-Product-Marketplace/index.php">';
                 exit;
-                }
+                // }
 
             } else {
                 echo '1';
