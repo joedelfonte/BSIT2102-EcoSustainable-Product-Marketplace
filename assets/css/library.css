@@ -1,0 +1,42 @@
+.container-l {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+}
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+.product-card:hover {
+    transform: scale(1.05);
+}
+.product-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.product-details {
+    padding: 15px;
+}
+.product-title {
+    font-size: 1.1em;
+    margin: 0;
+    color: #333;
+}
+.product-price {
+    color: #007BFF;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+.product-grid a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
+  }

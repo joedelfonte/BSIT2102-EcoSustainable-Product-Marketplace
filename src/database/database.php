@@ -2,16 +2,32 @@
 
 class Database{
     private $host = 'localhost';
-    private $dbname = 'eco_market_database';
+    private $dbname = 'eco-marketbase-database';
     private $username = 'userview';//default ay root
     private $password = 'viewonly';//defalut ay wala laman
     protected $conn;
+    private $adminUname = 'root';
+    private $adminPass = '';
 
     public function __construct(){//contructor
         $this->conn = null;//clean container
 
         try {//test connection and prepare the pdo variable
             $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo 'Cannot onnect to Db';
+            error_log("Connection error: " . $exception->getMessage());
+            exit;
+            
+        }
+    }
+
+    protected function setAdmin(){
+        $this->conn = null;//clean container
+
+        try {//test connection and prepare the pdo variable
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->adminUname, $this->adminpass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $exception) {
             echo 'Cannot onnect to Db';

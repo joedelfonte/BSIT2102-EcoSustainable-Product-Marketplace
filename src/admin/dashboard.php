@@ -1,6 +1,7 @@
 <title>DashBoard</title>
 <?php
-require_once dirname('../../config.php') . '\config.php';
+require_once '../../config.php';
+require_once(ROOT_PATH .'\src\database\database.php');
 require_once(ROOT_PATH .'\assets\header.php');
 ?>
 
@@ -16,53 +17,21 @@ require_once(ROOT_PATH .'\assets\header.php');
     
     <div></div>
     <div class="user-chart">
-        <h3>Showing All Users by Month</h3>
-        <div class="chart-users">
-            <canvas id="userChart"></canvas>
+        <h3>DashBoard</h3>
+        <div>
+            <div class="chart-users">
+                <h4>OverView</h4>
+                <canvas id="userChart"></canvas>
+            <?php
+            if (file_exists('dashboardProcess.php')) {
+                require_once('dashboardProcess.php');
+            } else {
+                echo 'Error Opening Table';
+            }
+            ?>
+            </div>
         </div>
     </div>
     
-    <?php
-        require_once('dashboardProcess.php')
-    ?>
-
-    <div>
-        <table id="table_id" class="display">
-            <thead>
-                <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        $(document).ready(function() {
-            $('#userTable').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": "user_data.php",
-                "columns": [
-                    { "data": "EcoId" },
-                    { "data": "Name" },
-                    { "data": "email" },
-                    { "data": "DateCreated" }
-                ]
-            });
-        });
-    </script>
-
-
 </body>
 </html>

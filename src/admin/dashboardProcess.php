@@ -1,27 +1,27 @@
-<!-- <?php 
-// require_once(ROOT_PATH .'\src\products\crudProd.php');
-// require_once('allUsersCount.php');
+<?php 
+require_once(ROOT_PATH .'\src\products\crudProd.php');
+require_once('allUsersCount.php');
 
-// $userAll = new Users();
-// $result = $userAll->read();
-// $summa = new DatabaseSummary();
-// $res = $summa->userSummary();
+$userAll = new Users();
+$result = $userAll->read();
+$summa = new DatabaseSummary();
+$res = $summa->userSummary();
 
-// // Count user by PHP
-// $totalUserByMonth = [];
-// foreach ($res as $user) {
-//     //Extract the month from the DateCreated
-//     $month = date('Y-m', strtotime($user['DateCreated']));
+// Count user by PHP
+$totalUserByMonth = [];
+foreach ($res as $user) {
+    //Extract the month from the DateCreated
+    $month = date('Y-m', strtotime($user['DateCreated']));
     
-//     if (isset($totalUserByMonth[$month])) {
-//         $totalUserByMonth[$month]++;
-//     } else {
-//         $totalUserByMonth[$month] = 1;
-//     }
-// }
+    if (isset($totalUserByMonth[$month])) {
+        $totalUserByMonth[$month]++;
+    } else {
+        $totalUserByMonth[$month] = 1;
+    }
+}
 
 // Convert the PHP array to JSON
-//$totalUserByMonthJson = json_encode($res);
+$totalUserByMonthJson = json_encode($res);
 ?>
 
 <script>
@@ -48,7 +48,7 @@
     // Initialize the chart
     const userChartCtx = document.getElementById('userChart').getContext('2d'); 
     new Chart(userChartCtx, userChartConfig);
-</script> -->
+</script>
 
 <?php 
 require_once(ROOT_PATH .'\src\products\crudProd.php');
