@@ -3,7 +3,6 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH . '/src/database/database.php');
 
 class Users extends Database {
-    private $table = 'users';
     private $queryResult;
 
     function __construct(){
@@ -14,12 +13,20 @@ class Users extends Database {
         return $this->conn;
     }
 
+    public function view(){
+        $sqlUsers = "SELECT * FROM `users`;";
+        $stmtUsers = $this->conn->prepare($sqlUsers);
+        if ($stmtUsers->execute()){
+            return $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
+        } else {return 'Query Error Excecuting';}
+    }
+
     public function addAccount($email, $password) {
         $email = isset($email) ? htmlspecialchars($email) : '';
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
         $mysql = "INSERT INTO users (`role_id`, `email`, `status_id`, `password`) 
-                  VALUES (1, :email, 1, :password)";
+                  VALUES (2, :email, 1, :password)";
     
         $stmt = $this->conn->prepare($mysql);
         $stmt->bindParam(':email', $email);
@@ -31,7 +38,7 @@ class Users extends Database {
 
     public function search($value, $column){
         $value = isset($value) ? htmlspecialchars($value) : '';
-        $query = "SELECT * FROM $this->table WHERE LOWER($column) LIKE LOWER(:search);";
+        $query = "SELECT * FROM users WHERE LOWER($column) LIKE LOWER(:search);";
 
         $value = "%" . $value . "%";
         $stmt = $this->conn->prepare($query);
@@ -43,6 +50,14 @@ class Users extends Database {
         } else {
             return false;
         }
+    }
+
+    public function viewLeftStore(){
+        $sqlUsers = "SELECT * FROM `users` left JOIN store on users.id = store.owner_id;";
+        $stmtUsers = $this->conn->prepare($sqlUsers);
+        if ($stmtUsers->execute()){
+            return $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
+        } else {return 'Query Error Excecuting';}
     }
 
     public function readAll($id){
@@ -64,9 +79,10 @@ class Users extends Database {
     }
 
     public function readLog($email){
-        $sqlQuery = "SELECT * FROM users WHERE email = :ID;";
+        $email = isset($email) ? htmlspecialchars($email) : '';
+        $sqlQuery = "SELECT * FROM users WHERE email = :email;";
         $stmt = $this->conn->prepare($sqlQuery);
-        $stmt->bindParam(':ID', $email);
+        $stmt->bindParam(':email', $email);
 
         if ($stmt->execute()){
             $this->queryResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -112,7 +128,7 @@ class Users extends Database {
     }
 
     public function delete($id){
-        $sqlQuery = "DELETE FROM users WHERE EcoId = :ID;";
+        $sqlQuery = "DELETE FROM users WHERE id = :ID;";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->bindParam(':ID', $id);
 
@@ -121,6 +137,11 @@ class Users extends Database {
         } else {
             return false;
         }
+    }
+
+    function __deconstruct(){
+        $queryResult = null;
+        $conn = null;
     }
 }
 ?>

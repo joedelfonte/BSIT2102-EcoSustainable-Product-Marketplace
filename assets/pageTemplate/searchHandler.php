@@ -1,5 +1,4 @@
 <?php
-// echo realpath(dirname(0));
 require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH .'\src\database\crudProd.php');
 // echo 'Hello reading file';
@@ -29,9 +28,10 @@ try {
     
     } else {
         echo 'Search Engine Error';
+        throw new Exception('Search Error');
     }
 } catch (Exception $error) {
-
+    echo "<div>" .$error->getMessage() . "</div>";
 }
 
 ?>

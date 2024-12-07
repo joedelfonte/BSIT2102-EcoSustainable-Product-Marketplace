@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Login and Register</title>
+    <link rel="icon" href="/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
 </head>

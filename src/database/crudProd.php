@@ -3,16 +3,8 @@ require_once realpath(dirname(__FILE__) . '/../../config.php');
 require_once(ROOT_PATH .'\src\database\database.php');
 
 class Products extends Database {
-    private $code;
-    private $ProductName;
-    private $price;
-    private $description;
-    private $stock;
-    private $sellerId;
-    private $categoryId;
-    private $statusId;
-    private $imangeDir;
 
+    private $table = 'product';
     public $queryResult;
 
     function __construct(){
@@ -20,13 +12,43 @@ class Products extends Database {
     }
 
     //create
-    public function addProduct(){
-        //clean data
-        $query = "INSERT INTO `product`(`ProductName`, `productCode`, `description`, `price`, `quantity`, `store_id`, `category_id`, `status_id`, `imageDir`) 
-                    VALUES (:name, )";
+    public function addProduct($productName, $storeId, $price, $quantity, $description, $category, $productCode) {
+        if ($productName != '' && $price != '' && $quantity != '') {
+            // SQL query
+            $query = "INSERT INTO $this->table (productCode, ProductName, quantity, price, description, store_id, category_id, status_id) 
+                      VALUES (:ECOID, :name, :quantity, :price, :description, :userId, :category, 1)";
+            $stmt = $this->conn->prepare($query);
+    
+            // Bind parameters
+            $stmt->bindParam(':ECOID', $productCode);
+            $stmt->bindParam(':name', $productName);
+            $stmt->bindParam(':userId', $storeId);
+            $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':quantity', $quantity);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':category', $category);
+    
+            // Execute the statement and check for success
+            if ($stmt->execute()) {
+                return true;
+            } else { 
+                error_log('Error Executing Query: ' .$stmt->errorInfo());
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     //read
+    public function view(){
+        $sqlProduct = "SELECT * FROM product";
+        $stmtProduct = $this->conn->prepare($sqlProduct);
+        if ($stmtProduct->execute()){
+            return $stmtProduct->fetchAll(PDO::FETCH_ASSOC);
+        } else {return 'Query Error Excecuting';}
+    }
+    
     public function search($value, $column){
         $value = isset($value) ? htmlspecialchars($value) : '';
         $query = "SELECT id, ProductName, description, productCode, price, imageDir FROM product WHERE LOWER($column)" ." LIKE " ."LOWER(:search);";
@@ -62,9 +84,10 @@ class Products extends Database {
         } else { return false;}
 
     }
+
     public function delete($id){
-        $mysql = "DELETE FROM product WHERE productCode = :ID;";
-        $stmt = $this->conn->prepare($sqlQuery);
+        $mysql = "DELETE FROM product WHERE id = :ID;";
+        $stmt = $this->conn->prepare($mysql);
         $stmt->bindParam(':ID', $id);
 
         if ($stmt->execute()){
@@ -75,16 +98,6 @@ class Products extends Database {
     }
 
     function __deconstruct(){
-        $this->conn = null;
-        $this->code = null;
-        $this->ProductName = null;
-        $this->price = null;
-        $this->description = null;
-        $this->stock = null;
-        $this->sellerId = null;
-        $this->categoryId = null;
-        $this->statusId = null;
-        $this->imangeDir = null;
         $this->$queryResult = null;
     }
 }

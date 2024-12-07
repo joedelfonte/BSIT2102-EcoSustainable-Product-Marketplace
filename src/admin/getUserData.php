@@ -17,7 +17,7 @@ $response = [
     "data" => $data
 ];
 
-echo json_encode($response);// return response 
+echo json_encode($response);
 
 } catch  (Exception $error){
     error_log($error);

@@ -29,7 +29,15 @@ if (isset($_POST['login'])) {
                 $_SESSION['user'] = isset($user['Name']) ? $user['Name'] : '' ;
                 $_SESSION['status'] = true;
                 $_SESSION['email'] = $email;
-                $_SESSION['grant'] = $user['role_id'];
+
+                error_log($_SESSION['grant']);
+
+                if ($user['role_id'] === 1){
+                    $_SESSION['grant'] = 1;
+                } else {
+                    $_SESSION['grant'] = 2;
+                }
+                
 
                 // if ($user['role_id'] = 1){//admin
                 //     // echo '<meta http-equiv="refresh" content="0;url=\project\BSIT2102-EcoSustainable-Product-Marketplace\src\admin\showinfo.php">';

@@ -21,7 +21,6 @@ if ($pdo) {
 
             if ($product) {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Handle form submission for product update
                     $productName = $_POST['ProductName'] ?? $product['ProductName'];
                     $description = $_POST['description'] ?? $product['description'];
                     $price = $_POST['price'] ?? $product['price'];

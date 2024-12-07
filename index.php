@@ -1,6 +1,7 @@
 <?php
 require_once 'assets/pageTemplate/header.php';
 ?>
+<link rel="icon" href="/project/BSIT2102-EcoSustainable-Product-Marketplace/assets/icons/eco-logo.png" alt="Eco-Marketplace-Logo" type="image/x-icon">
 <link rel="stylesheet" href="./assets/css/home-body.css">
 
 <div class="banner">

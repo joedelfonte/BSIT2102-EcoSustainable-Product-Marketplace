@@ -1,6 +1,5 @@
 <?php
-//category Crud
-require_once('../src/database/database.php');
+require_once('database.php');
 
 class CategoryCrud extends Database{
     function __construct(){
